@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+  <a class="brand" href="{{ url_for('index') }}">Anonymous Questions Box</a>
+  <div class="nav-actions">
+    <span class="hint">Logged in as <strong>{{ admin_username }}</strong></span>
+    <a class="btn btn-secondary btn-small" href="{{ url_for('admin_logout') }}">Log Out</a>
+  </div>
+</nav>
+
+<div class="dashboard-container">
+  <h1>Admin Dashboard</h1>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value" id="total-count">0</div>
+      <div class="stat-label">Total Messages</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="unread-count">0</div>
+      <div class="stat-label">Unread Messages</div>
+    </div>
+  </div>
+
+  <div id="message-list" class="message-list">
+    <div class="empty-state">Loading messages...</div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

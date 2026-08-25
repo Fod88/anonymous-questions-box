@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+  <a class="brand" href="{{ url_for('index') }}">Anonymous Questions Box</a>
+</nav>
+
+<div class="page-container">
+  <div class="card">
+    <h1>Admin Login</h1>
+    <p class="subtitle">Log in to view and manage incoming messages.</p>
+
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+
+    <form action="{{ url_for('admin_login') }}" method="POST">
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required autofocus>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Log In</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome - Anonymous Questions Box{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+  <a class="brand" href="{{ url_for('index') }}">Anonymous Questions Box</a>
+</nav>
+
+<div class="page-container">
+  <div class="card">
+    <h1>Welcome 👋</h1>
+    <p class="subtitle">Send your questions or messages freely. Choose to reveal your name or stay anonymous.</p>
+
+    <form action="{{ url_for('set_username') }}" method="POST" id="welcome-form">
+      <div class="choice-group">
+        <div class="choice-option active" id="option-anonymous" data-mode="anonymous">Anonymous</div>
+        <div class="choice-option" id="option-username" data-mode="username">Use a Name</div>
+      </div>
+
+      <div class="field username-field" id="username-field">
+        <label for="username">Your name</label>
+        <input type="text" id="username" name="username" placeholder="Enter a name" maxlength="50">
+        <p class="hint">This name will be visible to the Admin along with your message.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Continue</button>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

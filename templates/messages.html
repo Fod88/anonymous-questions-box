@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Write a Message - Anonymous Questions Box{% endblock %}
+
+{% block content %}
+<nav class="navbar">
+  <a class="brand" href="{{ url_for('index') }}">Anonymous Questions Box</a>
+</nav>
+
+<div class="page-container">
+  <div class="card wide">
+    <h1>Write your message</h1>
+    <div class="sending-as">Sending as: <strong id="sending-as-name">{{ username }}</strong></div>
+
+    <div id="alert-box"></div>
+
+    <form id="message-form">
+      <div class="field">
+        <label for="message">Your question or message</label>
+        <textarea id="message" name="message" placeholder="Type your question or message here..." maxlength="2000" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" id="send-btn">Send Message</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.CURRENT_USERNAME = {{ username|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
